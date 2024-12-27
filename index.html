@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Surprise for Suhani</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #cce7ff, #0052cc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .card {
+      width: 300px;
+      height: 200px;
+      background: #e6f7ff;
+      border: 3px solid #3399ff;
+      border-radius: 10px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      cursor: pointer;
+      transform-origin: right;
+      transform: rotateY(0deg);
+      transition: transform 1s ease-in-out;
+    }
+    .card.open {
+      transform: rotateY(180deg);
+    }
+    .card-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      font-size: 24px;
+      font-weight: bold;
+      color: #0052cc;
+    }
+    .cake-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+    .cake-container img {
+      width: 150px;
+    }
+    .message-container, .photo-container {
+      display: none;
+      text-align: center;
+      color: white;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .message-container h2, .photo-container h1 {
+      margin: 20px 0;
+    }
+    .photo-container img {
+      width: 200px;
+      border-radius: 50%;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+    button {
+      padding: 10px 20px;
+      background: #0052cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s ease-in-out;
+    }
+    button:hover {
+      background: #3399ff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card" id="birthdayCard">
+  <div class="card-content">🎉 Tap to Open 🎉</div>
+</div>
+
+<div class="cake-container" id="cakeContainer">
+  <img src="https://img.icons8.com/emoji/256/birthday-cake.png" alt="Birthday Cake">
+  <p>🎂 Blow the candles to reveal the surprise! 🎂</p>
+  <button onclick="revealMessage()">Blow Candles</button>
+</div>
+
+<div class="message-container" id="messageContainer">
+  <h2>🎉 Happy Birthday, Suhani! 🎉</h2>
+  <p>Wishing you a magical day filled with happiness and laughter. You light up every moment with your sweet smile. Have the best birthday ever!</p>
+  <p>🎂 Date of Birth: 4th January 🎂</p>
+  <button onclick="showPhoto()">See Your Surprise</button>
+</div>
+
+<div class="photo-container" id="photoContainer">
+  <h1>🎉 Happy Birthday, Suhani! 🎉</h1>
+  <img src="https://img.icons8.com/emoji/256/party-popper.png" alt="Celebration">
+  <p>You are amazing and loved by everyone around you. Keep shining like the star you are! 🥳</p>
+</div>
+
+<script>
+  const card = document.getElementById('birthdayCard');
+  const cakeContainer = document.getElementById('cakeContainer');
+  const messageContainer = document.getElementById('messageContainer');
+  const photoContainer = document.getElementById('photoContainer');
+
+  card.addEventListener('click', () => {
+    card.classList.add('open');
+    setTimeout(() => {
+      card.style.display = 'none';
+      cakeContainer.style.display = 'flex';
+    }, 1000);
+  });
+
+  function revealMessage() {
+    cakeContainer.style.display = 'none';
+    messageContainer.style.display = 'block';
+  }
+
+  function showPhoto() {
+    messageContainer.style.display = 'none';
+    photoContainer.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
